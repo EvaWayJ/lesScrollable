@@ -55,11 +55,28 @@ class _MyHomePageState extends State<MyHomePage> {
                 String key = activit.nom;
                 return new Dismissible(
                   key: new Key(key),
-                  child: new ListTile(
-                      title:  new Text('Activité : ${activites[i].nom}'),
-                      trailing: new Icon(activites[i].icone),
-                      leading: new Icon(activites[i].icone),
-                ),
+                  child: new Container(
+                    padding: EdgeInsets.all(5.0),
+                    height: 135.0,
+                    child: new Card(
+                      elevation: 7.5,
+                      child: new Container(
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            new Icon(activit.icone,color: Colors.teal,size: 75.5,),
+                            new Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                new Text("Activité :",style: new TextStyle(color: Colors.teal,fontSize: 20.0),),
+                                new Text(activit.nom, style: new TextStyle(color: Colors.teal[700],fontSize: 30.0),)
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                   background: new Container(
                     color: Colors.red,
                     padding: EdgeInsets.only(right: 20.0),
