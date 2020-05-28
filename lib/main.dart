@@ -60,19 +60,23 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 135.0,
                     child: new Card(
                       elevation: 7.5,
-                      child: new Container(
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            new Icon(activit.icone,color: Colors.teal,size: 75.5,),
-                            new Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                new Text("Activité :",style: new TextStyle(color: Colors.teal,fontSize: 20.0),),
-                                new Text(activit.nom, style: new TextStyle(color: Colors.teal[700],fontSize: 30.0),)
-                              ],
-                            )
-                          ],
+                      child : new InkWell(
+                        onTap: (() => print("tap")),
+                        onLongPress: (()=>print("C'est loooooooong")),
+                        child: new Container(
+                          child: new Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              new Icon(activit.icone,color: Colors.teal,size: 75.5,),
+                              new Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  new Text("Activité :",style: new TextStyle(color: Colors.teal,fontSize: 20.0),),
+                                  new Text(activit.nom, style: new TextStyle(color: Colors.teal[700],fontSize: 30.0),)
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
