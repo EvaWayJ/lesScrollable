@@ -33,12 +33,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: Text(widget.title),
       ),
-      body: Center(
+      body: SingleChildScrollView(
 
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
+            new Container(height: 100, color:Colors.red),
+            new Container(height: 100, color:Colors.yellow),
+            new Container(height: 100, color:Colors.grey),
+            new Container(height: 100, color:Colors.blue),
+            new Container(height: 100, color:Colors.red),
+            new Container(height: 100, color:Colors.yellow),
+            new Container(height: 100, color:Colors.grey),
+            new Container(height: 100, color:Colors.blue),
           ],
         ),
       )// This trailing comma makes auto-formatting nicer for build methods.
