@@ -25,30 +25,47 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
+  List<Activite> activites = [
+    new Activite("Vélo", Icons.directions_bike),
+    new Activite("peinture", Icons.palette),
+    new Activite("golf", Icons.golf_course),
+    new Activite("arcade", Icons.gamepad),
+    new Activite("bricolage", Icons.build),new Activite("Vélo", Icons.directions_bike),
+    new Activite("peinture", Icons.palette),
+    new Activite("golf", Icons.golf_course),
+    new Activite("arcade", Icons.gamepad),
+    new Activite("bricolage", Icons.build),new Activite("Vélo", Icons.directions_bike),
+    new Activite("peinture", Icons.palette),
+    new Activite("golf", Icons.golf_course),
+    new Activite("arcade", Icons.gamepad),
+    new Activite("bricolage", Icons.build)
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+        appBar: AppBar(
 
-        title: Text(widget.title),
-      ),
-      body: SingleChildScrollView(
-
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Container(height: 100, color:Colors.red),
-            new Container(height: 100, color:Colors.yellow),
-            new Container(height: 100, color:Colors.grey),
-            new Container(height: 100, color:Colors.blue),
-            new Container(height: 100, color:Colors.red),
-            new Container(height: 100, color:Colors.yellow),
-            new Container(height: 100, color:Colors.grey),
-            new Container(height: 100, color:Colors.blue),
-          ],
+          title: Text(widget.title),
         ),
-      )// This trailing comma makes auto-formatting nicer for build methods.
-    );
+        body: Center(
+            child: new ListView.builder(
+              itemCount: activites.length,
+              itemBuilder: (context, i){
+                return new ListTile(
+                  title:  new Text('Activité : ${activites[i].nom}'),
+                  trailing: new Icon(activites[i].icone),
+                  leading: new Icon(activites[i].icone),
+                );
+              },
+            )// This trailing comma makes auto-formatting nicer for build methods.
+        ));
   }
+}
+
+class Activite {
+  String nom;
+  IconData icone;
+
+  Activite(this.nom, this.icone);
+
 }
