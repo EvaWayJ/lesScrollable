@@ -51,10 +51,32 @@ class _MyHomePageState extends State<MyHomePage> {
             child: new ListView.builder(
               itemCount: activites.length,
               itemBuilder: (context, i){
-                return new ListTile(
-                  title:  new Text('Activité : ${activites[i].nom}'),
-                  trailing: new Icon(activites[i].icone),
-                  leading: new Icon(activites[i].icone),
+                Activite activit = activites[i];
+                String key = activit.nom;
+                return new Dismissible(
+                  key: new Key(key),
+                  child: new ListTile(
+                      title:  new Text('Activité : ${activites[i].nom}'),
+                      trailing: new Icon(activites[i].icone),
+                      leading: new Icon(activites[i].icone),
+                ),
+                  background: new Container(
+                    color: Colors.red,
+                    padding: EdgeInsets.only(right: 20.0),
+                    child: new Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        new Text("Supprimer", style: new TextStyle(color: Colors.white),),
+                        new Icon(Icons.delete,color: Colors.white)
+                      ],
+                    ),
+                  ),
+                  onDismissed: (direction){
+                    setState(() {
+                      print(activit.nom);
+                          activites.removeAt(i);
+                    });
+                  },
                 );
               },
             )// This trailing comma makes auto-formatting nicer for build methods.
