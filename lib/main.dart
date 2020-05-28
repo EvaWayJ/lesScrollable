@@ -53,29 +53,37 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Center(
-            child: new GridView.builder(
-              gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,
-            ),
-              itemCount: activites.length,
-              itemBuilder: (context, i){
-              return new Container(
-                margin: EdgeInsets.all(7.5),
-                child: new Card(
-                  elevation: 10.0,
-                  child: new Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      new Text("Activite"),
-                      new Icon(activites[i].icone, color: Colors.teal,size: 45.0,),
-                      new Text(activites[i].nom,style: new TextStyle(color: Colors.teal, fontSize: 20.0, fontStyle: FontStyle.italic),)
-                    ],
-                  ),
-                )
-              );
-            },
-            )// This trailing comma makes auto-formatting nicer for build methods.
+       child: (o == Orientation.portrait)? list(): grill(),
         ));
   }
+
+  Widget grill(){
+    return new GridView.builder(
+      gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,
+      ),
+      itemCount: activites.length,
+      itemBuilder: (context, i){
+        return new Container(
+            margin: EdgeInsets.all(7.5),
+            child: new Card(
+              elevation: 10.0,
+              child: new InkWell(
+                onTap: (()=> print("grill")),
+                child: new Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    new Text("Activite"),
+                    new Icon(activites[i].icone, color: Colors.teal,size: 45.0,),
+                    new Text(activites[i].nom,style: new TextStyle(color: Colors.teal, fontSize: 20.0, fontStyle: FontStyle.italic),)
+                  ],
+                ),
+              )
+            )
+        );
+      },
+    );
+  }
+
   Widget list (){
     return new ListView.builder(
       itemCount: activites.length,
